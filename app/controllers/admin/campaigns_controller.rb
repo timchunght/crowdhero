@@ -29,12 +29,12 @@ class Admin::CampaignsController < ApplicationController
         user_id: @settings.ct_sandbox_admin_id,
         billing_statement_text: @settings.billing_statement_text
       }
-      Crowdtilt.sandbox
-      response = Crowdtilt.post('/campaigns', {campaign: campaign})
+      # Crowdtilt.sandbox
+      # response = Crowdtilt.post('/campaigns', {campaign: campaign})
     rescue => exception
       redirect_to admin_campaigns, :flash => { :error => "Could not copy campaign" }
     else
-      @campaign.update_api_data(response['campaign'])
+      @campaign.update_attributes(campaign)
       @campaign.save
     end
 
@@ -69,7 +69,7 @@ class Admin::CampaignsController < ApplicationController
     end
 
      # Set the campaign user id
-     ct_user_id = @campaign.production_flag ? @settings.ct_production_admin_id : @settings.ct_sandbox_admin_id
+     # ct_user_id = @campaign.production_flag ? @settings.ct_production_admin_id : @settings.ct_sandbox_admin_id
 
     # calculate the goal amount (in case of a tilt by orders campaign)
     @campaign.set_goal
@@ -78,21 +78,14 @@ class Admin::CampaignsController < ApplicationController
     # If it fails, echo the error message sent by the API back to the user
     # If successful, save the campaign
     begin
-      campaign = {
-        title: @campaign.name,
-        tilt_amount: (@campaign.goal_dollars*100).to_i,
-        expiration_date: @campaign.expiration_date,
-        user_id: ct_user_id,
-        billing_statement_text: @settings.billing_statement_text
-      }
-      @campaign.production_flag ? Crowdtilt.production(@settings) : Crowdtilt.sandbox
-      response = Crowdtilt.post('/campaigns', {campaign: campaign})
+
+      # @campaign.production_flag ? Crowdtilt.production(@settings) : Crowdtilt.sandbox
+      # response = Crowdtilt.post('/campaigns', {campaign: campaign})
     rescue => exception
       flash.now[:error] = exception.to_s
       render action: "new"
       return
     else
-      @campaign.update_api_data(response['campaign'])
       @campaign.save
 
       # Now that we've created the campaign, create new FAQs if any were provided
