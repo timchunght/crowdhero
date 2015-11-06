@@ -14,19 +14,19 @@ module Crowdhoster
     config.assets.paths << Rails.root.join("app", "views", "theme", "assets", "javascripts")
     config.assets.paths << Rails.root.join("app", "views", "theme", "assets", "stylesheets")
 
-    config.crowdhoster_app_name = ENV['APP_NAME'] || 'crowdhoster_anonymous'
+    # config.crowdhoster_app_name = ENV['APP_NAME'] || 'crowdhoster_anonymous'
 
-    #Crowdtilt API key/secret
-    config.crowdtilt_sandbox_key = ENV['CROWDTILT_SANDBOX_KEY']
-    config.crowdtilt_sandbox_secret = ENV['CROWDTILT_SANDBOX_SECRET']
-    config.crowdtilt_production_key = ENV['CROWDTILT_PRODUCTION_KEY']
-    config.crowdtilt_production_secret = ENV['CROWDTILT_PRODUCTION_SECRET']
+    # #Crowdtilt API key/secret
+    # config.crowdtilt_sandbox_key = ENV['CROWDTILT_SANDBOX_KEY']
+    # config.crowdtilt_sandbox_secret = ENV['CROWDTILT_SANDBOX_SECRET']
+    # config.crowdtilt_production_key = ENV['CROWDTILT_PRODUCTION_KEY']
+    # config.crowdtilt_production_secret = ENV['CROWDTILT_PRODUCTION_SECRET']
 
     # --- Standard Rails Config ---
     config.time_zone = 'GMT'
     config.encoding = "utf-8"
     config.filter_parameters += [:password, :card_number, :security_code]
-    config.active_record.whitelist_attributes = true
+    # config.active_record.whitelist_attributes = true
     # Enable the asset pipeline
     config.assets.enabled = true
     # Version of your assets, change this if you want to expire all your assets

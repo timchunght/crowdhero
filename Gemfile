@@ -1,18 +1,18 @@
 source 'https://rubygems.org'
-ruby '1.9.3'
+ruby '2.1.5'
 
 # Framework and core dependencies
-gem 'rails', '3.2.13'
+gem 'rails', '4.1.6'
 gem 'pg'
 gem 'unicorn'
 gem 'foreman'
-
-gem 'crowdtilt', github: 'Crowdtilt/crowdtilt-gem'
+gem 'rails4_upgrade', github: 'alindeman/rails4_upgrade'
+# gem 'crowdtilt', github: 'Crowdtilt/crowdtilt-gem'
 gem 'devise', '~> 3.2.0'
 gem 'nokogiri'
 gem 'friendly_id', '~> 4.0.9'
 gem 'iso_country_codes'
-gem 'paperclip', '~> 3.0'
+gem 'paperclip'
 gem 'ckeditor'
 gem 'aws-sdk'
 gem 'active_model_serializers'
@@ -27,14 +27,18 @@ group :production do
   gem 'lograge'
 end
 
+gem 'sass-rails',   '~> 4.0.0.rc1'
+gem 'coffee-rails', '~> 4.0.0'
+gem 'uglifier', '>= 1.3.0'
 # Gems used only for assets and not required
 # in production environments by default.
-group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '>= 1.0.3'
-  gem 'asset_sync'
-end
+# group :assets do
+  
+#   gem 'sass-rails',   '~> 3.2.3'
+#   gem 'coffee-rails', '~> 3.2.1'
+#   gem 'uglifier', '>= 1.0.3'
+#   gem 'asset_sync'
+# end
 
 group :development, :test do
   gem 'pry-rails'
